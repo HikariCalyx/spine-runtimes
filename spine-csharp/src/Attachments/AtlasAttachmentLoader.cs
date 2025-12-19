@@ -48,7 +48,7 @@ namespace Spine {
 			for (int i = 0, n = regions.Length; i < n; i++) {
 				string path = sequence.GetPath(basePath, i);
 				regions[i] = FindRegion(path);
-				if (regions[i] == null) throw new ArgumentException(string.Format("Region not found in atlas: {0} (region attachment: {1})", path, name));
+				if (regions[i] == null) continue;
 			}
 		}
 
@@ -59,7 +59,7 @@ namespace Spine {
 			else {
 				AtlasRegion region = FindRegion(path);
 				if (region == null)
-					throw new ArgumentException(string.Format("Region not found in atlas: {0} (region attachment: {1})", path, name));
+					return null;
 				attachment.Region = region;
 			}
 			return attachment;
@@ -72,7 +72,7 @@ namespace Spine {
 			else {
 				AtlasRegion region = FindRegion(path);
 				if (region == null)
-					throw new ArgumentException(string.Format("Region not found in atlas: {0} (region attachment: {1})", path, name));
+					return null;
 				attachment.Region = region;
 			}
 			return attachment;
